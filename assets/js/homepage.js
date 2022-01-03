@@ -25,9 +25,7 @@ var getArtistSongs = function(artist){
                     songList.appendChild(songItemEl);
                 }
             })
-        } else {
-            songList.textContent = "Please Enter Valid Artist"
-        }
+        } 
     })
 }
 
