@@ -21,6 +21,7 @@ var getArtistSongs = function(artist){
                 //run for loop and iterate through song list and display them in a list as buttons
                 for (let i=0; i<data.response.hits.length; i++){
                     var songItemEl = document.createElement("li")
+                    //pull data from response and create two variables 
                     var title = data.response.hits[i].result.title;
                     var artist = data.response.hits[i].result.artist_names;
                     var songEl = document.createElement("button");
@@ -70,9 +71,12 @@ var searchHistoryHandler = function(){
     
 }
 var searchHistoryBtnHandler = function (event){
+    //if the user clicks the button then it will run getArtistSongs with the text content of the button as input
     if(event.target.id = "history-btn"){
         event.preventDefault();
+        //take the text content of the button and create a variable for it
         var input = event.target.textContent
+        //pass the input as a parameter for getArtistSongs
         getArtistSongs(input);
     }
 }
