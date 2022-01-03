@@ -53,6 +53,7 @@ var searchButtonHandler = function(event){
     //set artist searches array into local storage
     localStorage.setItem("history", JSON.stringify(artistSearches));
 }
+
 var searchHistoryHandler = function(){
     //get any info from local storage
     var searchHistoryArr = JSON.parse(localStorage.getItem("history")) 
@@ -63,9 +64,18 @@ var searchHistoryHandler = function(){
     for(let i=0; i<searchHistoryArr.length; i++){
         var searchHistoryBtns = document.createElement("button");
         searchHistoryBtns.textContent = searchHistoryArr[i];
+        searchHistoryBtns.setAttribute("id","history-btn")
         searchHistory.appendChild(searchHistoryBtns)
     }
     
 }
-searchBtn.addEventListener("click", searchButtonHandler)
+var searchHistoryBtnHandler = function (event){
+    if(event.target.id = "history-btn"){
+        event.preventDefault();
+        var input = event.target.textContent
+        getArtistSongs(input);
+    }
+}
+searchBtn.addEventListener("click", searchButtonHandler);
+searchHistory.addEventListener("click", searchHistoryBtnHandler);
 searchHistoryHandler();
