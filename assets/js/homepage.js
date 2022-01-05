@@ -23,8 +23,6 @@ var getArtistSongs = function(artist){
     fetch(apiUrl).then(function(response){
         if(response.ok){
             response.json().then(function(data){
-                //delete any left over text
-                //songList.innerHTML = "";
                 //if the artist or song returns no hits display message
                 if(data.response.hits.length === 0){
                     //songList.textContent = "Please Enter A Valid Artist"
@@ -86,14 +84,35 @@ var searchButtonHandler = function(event){
     }
     //on click grab data from search bar
     var userInput = search.value
+
     //clear the table
     removeRows();
+
     //run that data as a parameter through get artist songs function
     getArtistSongs(userInput);
+
     //push the input into artist searches array
-    artistSearches.push(userInput);
-    //set artist searches array into local storage
-    localStorage.setItem("history", JSON.stringify(artistSearches));
+    //check if the user input was valid
+    console.log(userInput);
+    if(userInput !== null && userInput !== ""){
+
+        //check if the item already exists in the array
+        if(artistSearches.includes(userInput)) {
+            return;
+        }
+
+        //check for the artistSearches length
+        if(artistSearches.length===10) {
+            //remove the first(oldest item)
+            artistSearches.splice(0,1)
+        } 
+        //add search item to the aray
+        artistSearches.push(userInput);
+
+        //set artist searches array into local storage
+        localStorage.setItem("history", JSON.stringify(artistSearches));
+    }
+   
 }
 
 var searchHistoryHandler = function(){
