@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Karaoke Web App</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="assets/css/style.css" />
+    
   </head>
   <body>
     <h1>Karaoke Made Easy</h1>
@@ -15,23 +19,48 @@
       <input name="artist" type="text" id="search-field" />
       <button type="submit" id="search">Search</button>
     </form>
-    <!--list of songs displayed by search api-->
+    <!--list of songs displayed by search api
     <div>
       <ul id="song-list">
       </ul>
     </div>
+    -->
+
+
+    <table class="table table-cillapsed table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>Artist</th>
+          <th>Title</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  
+
     <!--search history -->
     <div id="search-history">
     </div>
     <!--lyrics from lyric api-->
     <div>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
-        accusantium assumenda animi dolor, dignissimos similique quod. Velit
-        animi voluptas aliquam, ducimus dolorem repudiandae necessitatibus
-        aspernatur quod voluptates quisquam vitae quae!
+      <p id="result">
       </p>
     </div>
+
+    <!-- add bootstrap grid container here with rows and columns
+    <div class="container" id="song_grid">
+      <div class="row">
+        <textarea id="artist" class="col-md-2"></textarea>
+        <textarea id="title" class="col-md-9" ></textarea>
+        <button col-md-1>Select</button>
+      </div>
+    </div>
+    -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="config.js"></script>
     <script src="assets/js/homepage.js"></script>
   </body>
