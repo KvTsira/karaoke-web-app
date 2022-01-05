@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Karaoke Web App</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="assets/css/normalize.css" />
+    <link rel="stylesheet" href="assets/css/skeleton.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     
   </head>
@@ -26,18 +26,23 @@
     </div>
     -->
 
-
-    <table class="table table-cillapsed table-striped">
-      <thead class="table-dark">
-        <tr>
-          <th>Artist</th>
-          <th>Title</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  
+    <div class="container">
+      <div class="row">
+        <div class="twelve columns">
+          <!--table to use the full 12 column width and odd background color-->
+          <table class="u-full-width odd-background-color">
+            <thead>
+              <tr>
+                <th>Artist</th>
+                <th>Title</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
     <!--search history -->
     <div id="search-history">
@@ -47,16 +52,6 @@
       <p id="result">
       </p>
     </div>
-
-    <!-- add bootstrap grid container here with rows and columns
-    <div class="container" id="song_grid">
-      <div class="row">
-        <textarea id="artist" class="col-md-2"></textarea>
-        <textarea id="title" class="col-md-9" ></textarea>
-        <button col-md-1>Select</button>
-      </div>
-    </div>
-    -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
