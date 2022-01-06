@@ -14,3 +14,7 @@ body{
 .odd-background-color th:last-child,
 .odd-background-color td:last-child {
   padding-right: 15px; }
+
+#result{
+  white-space: pre;
+}
