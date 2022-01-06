@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karaoke Web App</title>
+
+    <!--
+      Link to Skeleton CSS
+      http://getskeleton.com/
+    -->
+    <link rel="stylesheet" href="assets/css/normalize.css" />
+    <link rel="stylesheet" href="assets/css/skeleton.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    
+  </head>
+  <body>
+    <h1>Karaoke Made Easy</h1>
+    <!--searchable form for artist-->
+    <form>
+      <label for="artist">Song or Artist Name:</label>
+      <input name="artist" type="text" id="search-field" />
+      <button type="submit" id="search">Search</button>
+    </form>
+    <!--list of songs displayed by search api
+    <div>
+      <ul id="song-list">
+      </ul>
+    </div>
+    -->
+
+    <div class="container">
+      <div class="row">
+        <div class="twelve columns">
+          <!--table to use the full 12 column width and odd background color-->
+          <table class="u-full-width odd-background-color">
+            <thead>
+              <tr>
+                <th>Artist</th>
+                <th>Title</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!--search history -->
+    <div id="search-history">
+    </div>
+    <!--lyrics from lyric api-->
+    <div>
+      <p id="result">
+      </p>
+    </div>
+    <script src="assets/js/homepage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+body{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* change back color for every odd row */
+.odd-background-color tbody > tr:nth-of-type(odd) {
+    background-color: #eeeeee;
+}
+
+/* restore the padding removed by skeleton*/
+.odd-background-color th:first-child,
+.odd-background-color td:first-child {
+  padding-left: 15px; }
+.odd-background-color th:last-child,
+.odd-background-color td:last-child {
+  padding-right: 15px; }
