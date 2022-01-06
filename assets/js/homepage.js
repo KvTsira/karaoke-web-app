@@ -51,7 +51,17 @@ var getArtistSongs = function(artist){
     })
 }
 
-
+var getLyrics = function(artist, title){
+    var apiUrl = "https://api.lyrics.ovh/v1/" + artist + "/" + title
+    fetch(apiUrl).then(function(response){
+        if(response.ok){
+            response.json().then(function(data){
+                console.log(data.lyrics)
+               txtResult.textContent = data.lyrics
+            })
+        }
+    })
+}
 //add a function that responses to click events
 function onselectRow(e){
     //check if the button is clicked
@@ -64,6 +74,7 @@ function onselectRow(e){
     var oCells=tbodyEl.rows.item(row_num).cells;
 
     //write the selected item artist and title to the text box
+    getLyrics(oCells.item(0).innerHTML, oCells.item(1).innerHTML)
     txtResult.innerHTML="Artist: " + oCells.item(0).innerHTML + "; Title: " + oCells.item(1).innerHTML ; 
 };
 
