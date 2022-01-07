@@ -1,11 +1,14 @@
 var search = document.getElementById("search-field");
 var searchBtn = document.getElementById("search");
-//var songList = document.getElementById("song-list")
 var accessToken = "UAzdTm4zgiU6lk_3xsyqJf9iI_5bv5yIDVbgLld44Y3U90kuq2IR3uoBZ6j66XbT";
 var searchHistory = document.getElementById("search-history");
 var txtResult=document.getElementById("result")
 var artistSearches = [];
 
+// Get the modal
+var modal = document.getElementById("myModal");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
 var tbodyEl = document.querySelector('tbody');
 
@@ -56,7 +59,6 @@ var getLyrics = function(artist, title){
     fetch(apiUrl).then(function(response){
         if(response.ok){
             response.json().then(function(data){
-                console.log(data.lyrics)
                txtResult.textContent = data.lyrics
             })
         }
@@ -74,9 +76,24 @@ function onselectRow(e){
     var oCells=tbodyEl.rows.item(row_num).cells;
 
     //write the selected item artist and title to the text box
-    getLyrics(oCells.item(0).innerHTML, oCells.item(1).innerHTML)
+
     txtResult.innerHTML="Artist: " + oCells.item(0).innerHTML + "; Title: " + oCells.item(1).innerHTML ; 
+    
+    modal.style.display = "block";
+    getLyrics(oCells.item(0).innerHTML, oCells.item(1).innerHTML)
 };
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
 
 //add an event to table rows buttons
 tbodyEl.addEventListener('click', onselectRow);

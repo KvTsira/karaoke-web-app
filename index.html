@@ -51,11 +51,20 @@
     <!--search history -->
     <div id="search-history">
     </div>
-    <!--lyrics from lyric api-->
-    <div>
-      <p id="result">
-      </p>
+
+  <!-- START of The Modal -->
+  <div id="myModal" class="modal" style="overflow:auto;">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="result">"some text in the modal</p>
+      <div>
+        <button onClick="window.print()">Print this lyrics</button>
+      </div>
     </div>
+  </div>
+  <!-- END of the Modal -->
+
     <script src="assets/js/homepage.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </body>
