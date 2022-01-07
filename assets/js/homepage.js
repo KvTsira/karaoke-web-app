@@ -65,6 +65,8 @@ function onselectRow(e){
 
     //write the selected item artist and title to the text box
     txtResult.innerHTML="Artist: " + oCells.item(0).innerHTML + "; Title: " + oCells.item(1).innerHTML ; 
+    localStorage.setItem('result',"Artist: " + oCells.item(0).innerHTML + "; Title: " + oCells.item(1).innerHTML);
+    return window.location.assign('/lyrics.html');
 };
 
 //add an event to table rows buttons
