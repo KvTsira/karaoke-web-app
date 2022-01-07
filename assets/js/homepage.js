@@ -2,7 +2,7 @@ var search = document.getElementById("search-field");
 var searchBtn = document.getElementById("search");
 var accessToken = "UAzdTm4zgiU6lk_3xsyqJf9iI_5bv5yIDVbgLld44Y3U90kuq2IR3uoBZ6j66XbT";
 var searchHistory = document.getElementById("search-history");
-//var txtResult=document.getElementById("result")
+var txtResult=document.getElementById("result")
 var artistSearches = [];
 
 // Get the modal
@@ -69,7 +69,8 @@ function onselectRow(e){
     //write the selected item artist and title to the text box
     
     modal.style.display = "block";
-    //txtResult.innerHTML="Artist: " + oCells.item(0).innerHTML + "; Title: " + oCells.item(1).innerHTML ; 
+    //TO DO: pass the lyrics text here to txtResult.innerHTML item
+    txtResult.innerHTML="Artist: " + oCells.item(0).innerHTML + "; Title: " + oCells.item(1).innerHTML ; 
 };
 
 

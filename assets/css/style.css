@@ -18,7 +18,7 @@ body{
 
 
 
- /* The Modal (background) */
+ /*START of the Modal Content */
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -33,7 +33,7 @@ body{
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
+
 .modal-content {
   background-color: #fefefe;
   margin: auto;
@@ -56,3 +56,5 @@ body{
   text-decoration: none;
   cursor: pointer;
 }
+
+/*END of the Modal Content */
