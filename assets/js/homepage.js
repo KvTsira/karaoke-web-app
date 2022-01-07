@@ -59,8 +59,13 @@ var getLyrics = function(artist, title){
     fetch(apiUrl).then(function(response){
         if(response.ok){
             response.json().then(function(data){
-               txtResult.textContent = data.lyrics
+                modal.style.display = "block";
+                txtResult.textContent = data.lyrics
             })
+        } else {
+            var error = document.getElementById("error-message")
+            error.textContent = "No Lyrics Found for Song"
+            return;
         }
     })
 }
@@ -78,8 +83,8 @@ function onselectRow(e){
     //write the selected item artist and title to the text box
 
     txtResult.innerHTML="Artist: " + oCells.item(0).innerHTML + "; Title: " + oCells.item(1).innerHTML ; 
-    
-    modal.style.display = "block";
+    var error = document.getElementById("error-message")
+    error.innerHTML = "";
     getLyrics(oCells.item(0).innerHTML, oCells.item(1).innerHTML)
 };
 
