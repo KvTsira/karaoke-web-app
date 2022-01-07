@@ -54,6 +54,18 @@ var getArtistSongs = function(artist){
     })
 }
 
+//function to get the lyrics
+var getLyrics = function(artist, title){
+    var apiUrl = "https://api.lyrics.ovh/v1/" + artist + "/" + title
+    fetch(apiUrl).then(function(response){
+        if(response.ok){
+            response.json().then(function(data){
+                console.log(data.lyrics)
+               txtResult.textContent = data.lyrics
+            })
+        }
+    })
+}
 
 //add a function that responses to click events
 function onselectRow(e){
@@ -70,7 +82,8 @@ function onselectRow(e){
     
     modal.style.display = "block";
     //TO DO: pass the lyrics text here to txtResult.innerHTML item
-    txtResult.innerHTML="Artist: " + oCells.item(0).innerHTML + "; Title: " + oCells.item(1).innerHTML ; 
+    getLyrics(oCells.item(0).innerHTML, oCells.item(1).innerHTML)
+    //txtResult.innerHTML="Artist: " + oCells.item(0).innerHTML + "; Title: " + oCells.item(1).innerHTML ; 
 };
 
 

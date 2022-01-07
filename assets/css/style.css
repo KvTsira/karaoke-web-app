@@ -15,7 +15,10 @@ body{
 .odd-background-color td:last-child {
   padding-right: 15px; }
 
-
+/* format the lyrics text*/
+#result{
+  white-space: pre;
+}
 
 
  /*START of the Modal Content */
@@ -31,8 +34,13 @@ body{
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  
 }
 
+.modal-body{
+  height: 80vh;
+  overflow-y: auto;
+}
 
 .modal-content {
   background-color: #fefefe;
@@ -56,5 +64,8 @@ body{
   text-decoration: none;
   cursor: pointer;
 }
+
+
+
 
 /*END of the Modal Content */
