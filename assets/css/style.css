@@ -20,13 +20,25 @@ body{
   white-space: pre;
 }
 
+form{
+margin-left: 1%;
+}
+
+
+#search-history{
+  position: absolute;
+  top: 25%;
+  margin-left: 1%;
+  width: 0px;
+}
+
 
  /*START of the Modal Content */
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 10px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -48,6 +60,7 @@ body{
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  overflow: auto;
 }
 
 /* The Close Button */
