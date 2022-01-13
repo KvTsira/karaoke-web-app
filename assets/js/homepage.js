@@ -80,7 +80,9 @@ function onselectRow(e){
     //get the row number
     var row_num = parseInt($(e.target).parent().parent().index());
     var oCells=tbodyEl.rows.item(row_num).cells;
-    var artist = oCells.item(0).innerHTML
+    var initialArtistTxt = oCells.item(0).innerHTML.replace(/\([^()]*\)/g, '')
+    var isolateArtist = initialArtistTxt.indexOf('&');
+    var artist = initialArtistTxt.substring(0, isolateArtist != -1 ? isolateArtist : initialArtistTxt.length)
     var song = oCells.item(1).innerHTML
 
     //write the selected item artist and title to the text box
