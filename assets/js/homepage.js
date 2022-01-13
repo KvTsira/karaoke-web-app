@@ -146,6 +146,12 @@ var searchButtonHandler = function(event){
         //add search item to the aray
         artistSearches.push(userInput);
     }
+    //create the search history button on click as well rather than on refresh
+    var searchHistoryBtn = document.createElement("button");
+    searchHistoryBtn.textContent = userInput;
+    searchHistoryBtn.setAttribute("id", "history-btn");
+    searchHistoryBtn.setAttribute("class","twelve columns");
+    searchHistory.appendChild(searchHistoryBtn);
    
 }
 
