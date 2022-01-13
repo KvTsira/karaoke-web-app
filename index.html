@@ -24,10 +24,15 @@
       <button type="submit" id="search">Search</button>
     </form>
     <div id="error-message"></div>
-
+    
+    <!--search history -->
+    <div id="search-history" class="container two columns">
+    </div>
+    
+    
     <div class="container">
       <div class="row">
-        <div class="twelve columns">
+        <div class="ten columns">
           <!--table to use the full 12 column width and odd background color-->
           <table class="u-full-width odd-background-color">
             <thead>
@@ -37,16 +42,11 @@
                 <th></th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody id="tbody"></tbody>
           </table>
         </div>
       </div>
     </div>
-
-    <!--search history -->
-    <div id="search-history">
-    </div>
-
   <!-- START of The Modal -->
   <div id="myModal" class="modal" style="overflow:auto;">
     <!-- Modal content -->
