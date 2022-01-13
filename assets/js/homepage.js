@@ -4,6 +4,7 @@ var accessToken = "UAzdTm4zgiU6lk_3xsyqJf9iI_5bv5yIDVbgLld44Y3U90kuq2IR3uoBZ6j66
 var searchHistory = document.getElementById("search-history");
 var txtResult=document.getElementById("result")
 var artistSearches = [];
+var tableBody = document.getElementById("tbody");
 
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -28,26 +29,26 @@ var getArtistSongs = function(artist){
             response.json().then(function(data){
                 //if the artist or song returns no hits display message
                 if(data.response.hits.length === 0){
-                    //songList.textContent = "Please Enter A Valid Artist"
-                }
-                //run for loop and iterate through song list and display them in a list as buttons
-                for (let i=0; i<data.response.hits.length; i++){
-                    var songItemEl = document.createElement("li")
-                    //pull data from response and create two variables 
-                    var title = data.response.hits[i].result.title;
-                    var artist = data.response.hits[i].result.artist_names;
-                    //var songEl = document.createElement("button");
-                    //songEl.textContent = title + " by " + artist
-                    //songItemEl.appendChild(songEl);
-                    //songList.appendChild(songItemEl);
+                    tableBody.textContent = "Please Enter A Valid Artist or Song Title"
+                    return;
+                } else{
+                    //set artist searches array into local storage
+                    localStorage.setItem("history", JSON.stringify(artistSearches));
+                    //run for loop and iterate through song list and display them in a list as buttons
+                    for (let i=0; i<data.response.hits.length; i++){
+                        var songItemEl = document.createElement("li")
+                        //pull data from response and create two variables 
+                        var title = data.response.hits[i].result.title;
+                        var artist = data.response.hits[i].result.artist_names;
 
-                    tbodyEl.innerHTML += `
-                        <tr>
-                            <td class=".row-data">${artist}</td>
-                            <td class=".row-data">${title}</td>
-                            <td><button class="selectBtn btn-primary">Select</button></td>
-                        </tr>
-                    `;
+                        tbodyEl.innerHTML += `
+                            <tr>
+                                <td class=".row-data">${artist}</td>
+                                <td class=".row-data">${title}</td>
+                                <td><button class="selectBtn btn-primary">Select</button></td>
+                            </tr>
+                        `;
+                    }
                 }
             })
         } 
@@ -79,13 +80,17 @@ function onselectRow(e){
     //get the row number
     var row_num = parseInt($(e.target).parent().parent().index());
     var oCells=tbodyEl.rows.item(row_num).cells;
+    var initialArtistTxt = oCells.item(0).innerHTML.replace(/\([^()]*\)/g, '')
+    var isolateArtist = initialArtistTxt.indexOf('&');
+    var artist = initialArtistTxt.substring(0, isolateArtist != -1 ? isolateArtist : initialArtistTxt.length)
+    var song = oCells.item(1).innerHTML
 
     //write the selected item artist and title to the text box
 
     txtResult.innerHTML="Artist: " + oCells.item(0).innerHTML + "; Title: " + oCells.item(1).innerHTML ; 
     var error = document.getElementById("error-message")
     error.innerHTML = "";
-    getLyrics(oCells.item(0).innerHTML, oCells.item(1).innerHTML)
+    getLyrics(artist.replace(/\([^()]*\)/g, ''), song.replace(/\([^()]*\)/g, ''))
 };
 
 // When the user clicks on <span> (x), close the modal
@@ -126,7 +131,6 @@ var searchButtonHandler = function(event){
 
     //push the input into artist searches array
     //check if the user input was valid
-    console.log(userInput);
     if(userInput !== null && userInput !== ""){
 
         //check if the item already exists in the array
@@ -141,10 +145,13 @@ var searchButtonHandler = function(event){
         } 
         //add search item to the aray
         artistSearches.push(userInput);
-
-        //set artist searches array into local storage
-        localStorage.setItem("history", JSON.stringify(artistSearches));
     }
+    //create the search history button on click as well rather than on refresh
+    var searchHistoryBtn = document.createElement("button");
+    searchHistoryBtn.textContent = userInput;
+    searchHistoryBtn.setAttribute("id", "history-btn");
+    searchHistoryBtn.setAttribute("class","twelve columns");
+    searchHistory.appendChild(searchHistoryBtn);
    
 }
 
@@ -159,6 +166,7 @@ var searchHistoryHandler = function(){
         var searchHistoryBtns = document.createElement("button");
         searchHistoryBtns.textContent = searchHistoryArr[i];
         searchHistoryBtns.setAttribute("id","history-btn")
+        searchHistoryBtns.setAttribute("class", "twelve columns");
         searchHistory.appendChild(searchHistoryBtns)
     }
     
@@ -171,6 +179,8 @@ var searchHistoryBtnHandler = function (event){
         var input = event.target.textContent
         //clear the table
         removeRows();
+        //need to set artistSearches to history otherwise getArtistSongs function deletes everything in local storage
+        artistSearches = JSON.parse(localStorage.getItem("history"))
         //pass the input as a parameter for getArtistSongs
         getArtistSongs(input);
     }
