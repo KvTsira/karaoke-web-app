@@ -160,6 +160,7 @@ var searchHistoryHandler = function(){
         var searchHistoryBtns = document.createElement("button");
         searchHistoryBtns.textContent = searchHistoryArr[i];
         searchHistoryBtns.setAttribute("id","history-btn")
+        searchHistoryBtns.setAttribute("class", "twelve columns");
         searchHistory.appendChild(searchHistoryBtns)
     }
     
@@ -172,6 +173,8 @@ var searchHistoryBtnHandler = function (event){
         var input = event.target.textContent
         //clear the table
         removeRows();
+        //need to set artistSearches to history otherwise getArtistSongs function deletes everything in local storage
+        artistSearches = JSON.parse(localStorage.getItem("history"))
         //pass the input as a parameter for getArtistSongs
         getArtistSongs(input);
     }
