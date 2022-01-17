@@ -18,7 +18,7 @@ To allow a Karaoke enthusiast to more easily search a song or artist and be pres
 - Javascript
 
 ## Website
-https://dannyramirezgd.github.io/karaoke-web-app/
+https://kvtsira.github.io/karaoke-web-app/
 
 ## Screenshot
 ![screenshot](https://github.com/dannyramirezgd/karaoke-web-app/blob/main/assets/images/screencapture.png)
